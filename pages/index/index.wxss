@@ -1,3 +1,5 @@
+@import "../common/lib/weui.wxss";
+
 /**index.wxss**/
 .userinfo {
   display: flex;
@@ -18,7 +20,19 @@
 
 .usermotto {
   margin-left: 20px;
-  margin-top: 200px;
+  margin-top: 20px;
   margin-right: 20px;
 
+}
+
+.information{
+  padding: 20px;
+}
+
+.section_title{
+  background-color: #f0f0f0;
+  margin-top: 10px;
+}
+.weui-label{
+  width: 5em;
 }

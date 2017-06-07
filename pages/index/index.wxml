@@ -1,10 +1,82 @@
 <!--index.wxml-->
 <view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
+  <view bindtap="bindViewTap" class="userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
   </view>
   <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+    <text class="user-motto"> 完善个人资料 </text>
   </view>
+</view>
+
+<view class="information">
+  <form class="page-body" bindsubmit="setNaivgationBarTitle">
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">真实姓名</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" type="text" placeholder="请输入您的真实姓名" name="title"></input>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">联系电话</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" type="number" placeholder="请输入您的联系电话" name="title"></input>
+        </view>
+      </view>
+
+      <!--兴趣爱好-->
+      <view class="weui-cell weui-cell_input" bindtap="bindfeelingViewTap">
+        <view class="weui-cell__hd">
+          <view class="weui-label">兴趣爱好</view>
+        </view>
+        <view class="weui-cell">
+          <picker id="picker1" value="{{index}}" range="{{array}}" bindchange="bindPickerChange">
+            <view class="picker">
+              {{array[index]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <!--感情状态-->
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">感情状态</view>
+        </view>
+        <view class="weui-cell" bindtap="bindFeelingChange">
+          <picker value="{{feelingIndex}}" range="{{feelingArray}}" bindchange="bindFeelingChange">
+            <view class="picker">
+              {{feelingArray[feelingIndex]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <!--信仰状态-->
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">信仰状态</view>
+        </view>
+        <view class="weui-cell">
+          <picker value="{{faithIndex}}" range="{{faithArray}}" bindchange="bindFaithChange">
+            <view class="picker">
+              {{faithArray[faithIndex]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell">
+        <checkbox value="1" checked="{{false}}" />是否公开联系电话和真实姓名
+      </view>
+    </view>
+    <view class="btn-area">
+      <button type="primary" formType="submit">提交</button>
+    </view>
+  </form>
 </view>
