@@ -14,6 +14,9 @@
     text-align: center;
     overflow-y:auto;
 }
+.message{
+  padding: 5px 0;
+}
 .system-message {
     font-size: 14px;
     line-height: 14px;
@@ -26,10 +29,10 @@
 
 }
 .user-message {
-    margin: 38rpx 20rpx 0;
+    margin: 40rpx 20rpx 10rpx;
     text-align: left;
     font-size: 0;
-    display: flex
+    display: flex;
 }
 .user-message.me {
     flex-direction: row-reverse;

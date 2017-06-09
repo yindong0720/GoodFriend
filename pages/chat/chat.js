@@ -215,7 +215,12 @@ Page({
         setTimeout(() => {
             if (this.data.inputContent && this.tunnel) {
                 this.tunnel.emit('speak', { word: this.data.inputContent });
+                
+                //linlin
+                this.pushMessage(createUserMessage(this.data.inputContent, this.me, this.me.openId));
+
                 this.setData({ inputContent: '' });
+               
             }
         });
     },
