@@ -1,0 +1,13 @@
+{
+  "name": "qcloud-weapp-client-demo",
+  "version": "1.0.0",
+  "description": "GoodFriend v1.0",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yindong0720/GoodFriend.git"
+  },
+  "keywords": [],
+  "author": "CFETeam",
+  "license": "MIT"
+}
