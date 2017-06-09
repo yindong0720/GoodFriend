@@ -1,40 +1,96 @@
-<view class="root">
-    <view class="line">
-        <text>系统设置</text>
-        <view bindtap="openChat" class="demo">
-            聊天室
-            <view class="link">Demo体验 ></view>
+<!--index.wxml-->
+<view class="container">
+  <view bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto"> 完善个人资料 </text>
+  </view>
+</view>
+
+<view class="information">
+  <form class="page-body" bindsubmit="submitUserInfo">
+    <!--昵称 -->
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">昵称</view>
         </view>
-    </view>
-    <view class="line">
-        <text>登录接口测试</text>
-        <input type="text" value="{{loginUrl}}" disabled class="hide"></input>
-        <view class="line-control">
-            <view bindtap="doLogin" class="item"><view class="item-inner">登录</view></view>
-            <view bindtap="clearSession" class="item"><view class="item-inner">清除登录会话</view></view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" type="text" name="nickName" value="{{userInfo.nickName}}"></input>
         </view>
-    </view>
-    <view class="line">
-        <text>带会话请求测试</text>
-        <input type="text" value="{{requestUrl}}" disabled class="hide"></input>
-        <view class="line-control">
-            <view bindtap="doRequest" class="item" ><view class="item-inner">请求</view></view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">真实姓名</view>
         </view>
-    </view>
-    <view class="line">
-        <text>WebSocket 信道服务测试</text>
-        <input type="text" value="{{tunnelUrl}}" disabled class="hide" />
-        <view class="line-control">
-            <view class="item flag">
-                <view class="item-inner">信道
-                    <view class="switch-status">
-                        <text>{{tunnelStatusText[tunnelStatus]}}</text>
-                        <switch bindchange="switchTunnel" class="switch" checked="{{tunnelStatus == 'connected'}}"/>
-                    </view>
-                </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" type="text" placeholder="请输入您的真实姓名" name="realName"></input>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">联系电话</view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" type="number" placeholder="请输入您的联系电话" name="phone"></input>
+        </view>
+      </view>
+
+      <!--兴趣爱好-->
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">兴趣爱好</view>
+        </view>
+        <view class="weui-cell">
+          <picker name="hobby" range-key="name" range="{{objectArray}}" bindchange="bindPickerChange">
+            <view class="picker">
+              {{objectArray[index].name}}
             </view>
-            <view bindtap="sendMessage" class="item {{tunnelStatus == 'connected' || 'disabled'}}"><view class="item-inner">发送消息</view></view>
-            <view bindtap="testReconnect" class="item {{tunnelStatus == 'connected' || 'disabled'}}"><view class="item-inner">测试重连</view></view>
+          </picker>
         </view>
+      </view>
+
+      <!--感情状态-->
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">感情状态</view>
+        </view>
+        <view class="weui-cell" bindtap="bindFeelingChange">
+          <picker name="feeling" value="{{feelingIndex}}" range="{{feelingArray}}" bindchange="bindFeelingChange">
+            <view class="picker">
+              {{feelingArray[feelingIndex]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <!--信仰状态-->
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+          <view class="weui-label">信仰状态</view>
+        </view>
+        <view class="weui-cell">
+          <picker name="faith" value="{{faithIndex}}" range="{{faithArray}}" bindchange="bindFaithChange">
+            <view class="picker">
+              {{faithArray[faithIndex]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="weui-cell weui-cell_switch">
+        <view class="weui-cell__bd">是否公开联系电话和真实姓名</view>
+        <view class="weui-cell__ft">
+          <switch name="isOpen" bindchange="switch1Change"/>
+        </view>
+      </view>
     </view>
+
+    <view class="btn-area">
+      <button type="primary" formType="submit">提交</button>
+    </view>
+  </form>
 </view>
